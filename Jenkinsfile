@@ -1,10 +1,15 @@
 pipeline {
-    agent { docker { image 'maven:3.6.3' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'mvn --version'
-            }
-        }
-    }
-}
+     agent any 
+
+     stages {
+     	stage ('build') {
+
+     		steps {
+     			withMaven(maven : 'Maven360'){
+     				sh 'mvn --version'
+     			 }
+     		}
+     	}
+
+     }
+ } 
